@@ -10,13 +10,24 @@ public class Board extends JPanel implements ActionListener, KeyListener {
     private final int DELAY = 25;
     // controls the size of the board
     public static final int TILE_SIZE = 50;
-    public static final int ROWS = 12;
-    public static final int COLUMNS = 18;
+    public static final int ROWS = 9;
+    public static final int COLUMNS = 9;
     // controls how many coins appear on the board
     public static final int NUM_COINS = 5;
     // suppress serialization warning
     private static final long serialVersionUID = 490905409104883233L;
-    
+    //game map
+    public static final int[][] GAME_MAP = {
+           {0,0,0,0,0,0,0,0,1},
+           {0,0,0,0,0,0,0,0,1}, 
+           {0,0,0,0,0,0,0,0,1},
+           {0,0,0,0,0,0,0,0,1},
+           {0,0,0,0,1,0,0,0,1},
+           {0,0,0,0,0,0,0,0,1}, 
+           {0,0,1,0,0,0,0,0,1},
+           {0,0,0,0,0,0,0,0,1},
+           {0,0,0,1,0,0,0,0,1},
+    }
     // keep a reference to the timer object that triggers actionPerformed() in
     // case we need access to it in another method
     private Timer timer;
@@ -97,16 +108,18 @@ public class Board extends JPanel implements ActionListener, KeyListener {
         g.setColor(new Color(214, 214, 214));
         for (int row = 0; row < ROWS; row++) {
             for (int col = 0; col < COLUMNS; col++) {
-                // only color every other tile
-                if ((row + col) % 2 == 1) {
-                    // draw a square tile at the current row/column position
-                    g.fillRect(
+                
+               
+              
+                if(GAME_MAP[row][col]==1){
+                      g.fillRect(
                         col * TILE_SIZE, 
                         row * TILE_SIZE, 
                         TILE_SIZE, 
                         TILE_SIZE
-                    );
+                      );
                 }
+                
             }    
         }
     }
