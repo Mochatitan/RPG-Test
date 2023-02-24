@@ -186,5 +186,5 @@ public class Board extends JPanel implements ActionListener, KeyListener {
         // remove collected coins from the board
         coins.removeAll(collectedCoins);
     }
-
 }
+public Boolean tileTaken(Point pos, int dx, int dy){return false;}
